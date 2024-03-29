@@ -50,7 +50,6 @@ public class stringmergesort {
         return arr3;
     }
 
-    // return true if str1 apperars before str2 in alphabetical order
     static boolean isAlphabeticallySmaller(String str1, String str2) {
         if (str1.compareTo(str2) < 0) {
             return true;
