@@ -149,7 +149,57 @@ public class RedBlackTrees {
         return root;
     }
 
+    public void insert(int data) {
+        if (this.root == null) {
+            this.root = new Node(data);
+            this.root.color = 'B';
+        } else {
+            this.root = insertHelp(this.root, data);
+        }
+    }
+
+    void inorderHelper(Node node) {
+        if (node != null) {
+            inorderHelper(node.left);
+            System.out.print(node.data + " ");
+            inorderHelper(node.right);
+        }
+    }
+
+    public void inorder() {
+        inorderHelper(this.root);
+    }
+
+    void printTreeHelper(Node root, int space) {
+        int i;
+        if (root != null) {
+            space = space + 10;
+            printTreeHelper(root.right, space);
+            System.out.println();
+            for (i = 10; i < space; i++) {
+                System.out.print(" ");
+            }
+            System.out.print(root.data + " ");
+            System.out.println();
+        }
+    }
+
+    public void printTree() {
+        printTreeHelper(this.root, 0);
+    }
+
     public static void main(String[] args) {
+
+        RedBlackTrees rbt = new RedBlackTrees();
+        int arr[] = { 3, 6, 8, 10, 14, 18, 20, 21, 25 };
+
+        for (int i = 0; i < arr.length; i++) {
+            rbt.insert(arr[i]);
+            System.out.println();
+            rbt.inorder();
+        }
+
+        rbt.printTree();
 
     }
 
